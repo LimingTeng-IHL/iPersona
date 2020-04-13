@@ -7,13 +7,13 @@
     <div class="login_panel">
       <div class="login_title">
         <img src="../assets/img/logo.png" alt="">
-        <p>输入账号进行安全登录</p>
+        <p>IPERSONA</p>
       </div>
-      <label style="margin-top: 50px">账号：</label>
+      <label style="margin-top: 50px">Email：</label>
       <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
-      <label>密码：</label>
+      <label>Password：</label>
       <input v-model="userPassword" type="password" title="请输入密码">
-      <input class="bt" @click="login" type="submit" value="登录">
+      <input class="bt" @click="login" type="submit" value="Login">
     </div>
   </div>
 </template>
@@ -41,15 +41,15 @@ export default {
         // 获取用户信息，登录成功
         if (response.data.data.userId !== 0) {
           this.$message({
-            message: '登录成功！',
+            message: 'Login Success!',
             type: 'success'
           })
         } else {
-          this.$message.error('登录失败，请检查账号或密码!')
+          this.$message.error('Login Failed, Please Check Account Or Password!')
         }
         console.log(response.data.data)
       }).catch((error) => {
-        this.$message.error('登录失败，请检查账号或密码!')
+        this.$message.error('Login Failed, Please Check Account Or Password!')
         console.log(error)
       })
     }

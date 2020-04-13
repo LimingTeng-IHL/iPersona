@@ -17,7 +17,7 @@
       </div>
       <div>
         <p class="sub_title">{{tip}}</p>
-        <p class="sub_desc">扫码登录，更易、更快、更安全</p>
+        <p class="sub_desc">Scan Code to Login, Easier, Faster and Safer</p>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ export default {
     return {
       state: 0, // 场景：0无登录码，1有登陆码，2正在登录，3登录码过期
       count: 30, // 登录码有效倒计时（S）
-      tip: '正在获取登录码，请稍等', // 提示
+      tip: 'Obtaining Login Code, Please Wait', // 提示
       imgURL: '', // 登录码路径
       authToken: '', // 验证口令
       userId: '', // 扫码登录的用户ID
@@ -51,7 +51,7 @@ export default {
       console.log('开始获取')
       // 所有参数重置
       this.state = 0 // 场景为无二维码
-      this.tip = '正在获取登录码，请稍等'
+      this.tip = 'Obtaining Login Code, Please Wait'
       this.count = 30
       clearInterval(this.timeCount)
       // 开始获取新的token
@@ -62,7 +62,7 @@ export default {
         // 保存token，改变场景，显示登录码，开始轮询
         this.authToken = response.data.data
         this.state = 1 // 场景为有登录码
-        this.tip = '请使用手机口令扫码登录'
+        this.tip = 'Scan QRCode to Login'
         this.imgURL = this.tokenImgApi + response.data.data // 拼装获得登录码链接
         this.timeCount = setInterval(this.getTokenInfo, 1000) // 开启每隔1S的轮询，向服务器请求口令信息
       }).catch((error) => {
@@ -76,7 +76,7 @@ export default {
       // 登录码到期，改变场景
       if (this.count === 0) {
         this.state = 3 // 场景为登录码过期
-        this.tip = '二维码已过期，请刷新'
+        this.tip = 'The QR Code Has Expired, Please Refresh'
       }
       // 防止计数溢出
       if (this.count < -1000) {
@@ -104,7 +104,7 @@ export default {
           // token状态为过期（服务器），改变场景
         } else if (auth.authState === 3) {
           this.state = 3
-          this.tip = '二维码已过期，请刷新'
+          this.tip = 'The QR Code Has Expired, Please Refresh'
         }
       }).catch((error) => {
         console.log(error)

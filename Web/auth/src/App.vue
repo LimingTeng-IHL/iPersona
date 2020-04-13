@@ -7,10 +7,10 @@
     </el-carousel>
     <router-view></router-view>
     <div class="login_content">
-      <p><span class="left-quote"></span><span>Trunch·创趣</span></p>
-      <p><span>创造点滴乐趣</span><span class="right-quote"></span></p>
+      <p><span class="left-quote"></span><span>iPersona</span></p>
+      <p><span></span><span class="right-quote"></span></p>
     </div>
-    <p class="power_by">© 2019 - 2019 Trunch All Rights Reserved</p>
+    <p class="power_by">© Immortal Identity All Rights Reserved</p>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   name: 'App',
   data () {
     return {
-      bgURL: [require('./assets/img/bg1.jpg'), require('./assets/img/bg2.jpg'), require('./assets/img/bg3.jpg'), require('./assets/img/bg4.jpg')]
+      bgURL: [require('./assets/img/bg1.jpg'), require('./assets/img/bg2.jpg'), require('./assets/img/bg3.jpg')]
     }
   }
 }
