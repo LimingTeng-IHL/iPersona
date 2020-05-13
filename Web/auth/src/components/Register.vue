@@ -1,11 +1,10 @@
 <template>
-  <!--  账号输入登录-->
-  <div class="login_box">
-    <router-link to="/auth">
+  <div class="register_box">
+    <router-link to="/input">
       <div class="login_close"></div>
     </router-link>
-    <div class="login_panel">
-      <div class="login_title">
+    <div class="register_panel">
+      <div class="register_title">
         <img src="../assets/img/logo.png" alt="">
         <p>IPERSONA</p>
       </div>
@@ -13,58 +12,67 @@
       <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
       <label>Password：</label>
       <input v-model="userPassword" type="password" title="请输入密码">
-      <input class="bt" @click="login" type="submit" value="Login">
-      <label  class="register_title">Don't have an account?</label>
-      <router-link to="/register">
-        <label>Register</label>
-      </router-link>
+      <label>Re-Type Password：</label>
+      <input v-model="userPassword" type="password" title="请输入密码">
+<!--      <input class="bt" @click="login" type="submit" value="Register">-->
+      <input class="bt" @click="login" type="submit" value="Register">
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Input',
-  data () {
-    return {
-      userId: '',
-      userPassword: '',
-      userInfoApi: 'http://localhost/login' // 通过用户ID登录接口
-    }
-  },
-  methods: {
-    login () {
-      this.$ajax({
-        method: 'post',
-        url: this.userInfoApi,
-        data: this.qs.stringify({
-          userId: this.userId,
-          userPassword: this.userPassword
+  // export default {
+  //   name: 'Register',
+  //   data () {
+  //     return {
+  //       userId: '',
+  //       userPassword: '',
+  //       userInfoApi: 'http://localhost/login' // 通过用户ID登录接口
+  //     }
+  //   },
+  //   methods: {
+  //     login () {
+  //       this.$ajax({
+  //         method: 'post',
+  //         url: this.userInfoApi,
+  //         data: this.qs.stringify({
+  //           userId: this.userId,
+  //           userPassword: this.userPassword
+  //         })
+  //       }).then((response) => {
+  //         // 获取用户信息，登录成功
+  //         if (response.data.data.userId !== 0) {
+  //           this.$message({
+  //             message: 'Login Success!',
+  //             type: 'success'
+  //           })
+  //         } else {
+  //           this.$message.error('Login Failed, Please Check Account Or Password!')
+  //         }
+  //         console.log(response.data.data)
+  //       }).catch((error) => {
+  //         this.$message.error('Login Failed, Please Check Account Or Password!')
+  //         console.log(error)
+  //       })
+  //     }
+  //   }
+  // }
+  export default {
+    name: 'Register',
+    methods: {
+      login () {
+        this.$message({
+          message: 'Register Success!',
+          type: 'success'
         })
-      }).then((response) => {
-        // 获取用户信息，登录成功
-        if (response.data.data.userId !== 0) {
-          this.$message({
-            message: 'Login Success!',
-            type: 'success'
-          })
-        } else {
-          this.$message.error('Login Failed, Please Check Account Or Password!')
-        }
-        console.log(response.data.data)
-      }).catch((error) => {
-        this.$message.error('Login Failed, Please Check Account Or Password!')
-        console.log(error)
-      })
+      }
     }
   }
-}
 </script>
 
 <style scoped>
-
   /*登录框*/
-  .login_box {
+  .register_box {
     z-index: 99;
     position: absolute;
     width: 380px;
@@ -92,7 +100,7 @@ export default {
   }
 
   /*登录*/
-  .login_panel {
+  .register_panel {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -105,11 +113,11 @@ export default {
     overflow: hidden;
   }
 
-  .login_panel .login_title {
+  .register_panel .register_title {
     text-align: center;
   }
 
-  .login_panel .login_title img {
+  .register_panel .register_title img {
     margin-top: 60px;
     height: 70px;
     width: 70px;
@@ -118,13 +126,13 @@ export default {
     border: 3px solid #d7e8fc;
   }
 
-  .login_panel .login_title p {
+  .register_panel .register_title p {
     margin-top: 15px;
     color: #999999;
     font-size: 15px;
   }
 
-  .login_panel label {
+  .register_panel label {
     display: block;
     font-size: 12px;
     line-height: 18px;
@@ -132,7 +140,7 @@ export default {
     margin-top: 10px;
   }
 
-  .login_panel input {
+  .register_panel input {
     display: inline;
     height: 42px;
     padding: 0 5%;
@@ -147,7 +155,7 @@ export default {
   }
 
   /* 按钮 */
-  .login_panel .bt {
+  .register_panel .bt {
     margin-top: 35px;
     width: 100%;
     color: #ffffff;
@@ -155,14 +163,7 @@ export default {
     cursor: pointer;
   }
 
-  .login_panel .register_title {
-    margin-top: 35px;
-    width: 100%;
-    color: #a9a8a5;
-    cursor: pointer;
-  }
-
-  .login_panel .bt:hover {
+  .register_panel .bt:hover {
     background-color: #2f86f6;
   }
 
