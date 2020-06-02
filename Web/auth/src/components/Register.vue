@@ -21,53 +21,30 @@
 </template>
 
 <script>
-  // export default {
-  //   name: 'Register',
-  //   data () {
-  //     return {
-  //       userId: '',
-  //       userPassword: '',
-  //       userInfoApi: 'http://localhost/login' // 通过用户ID登录接口
-  //     }
-  //   },
-  //   methods: {
-  //     login () {
-  //       this.$ajax({
-  //         method: 'post',
-  //         url: this.userInfoApi,
-  //         data: this.qs.stringify({
-  //           userId: this.userId,
-  //           userPassword: this.userPassword
-  //         })
-  //       }).then((response) => {
-  //         // 获取用户信息，登录成功
-  //         if (response.data.data.userId !== 0) {
-  //           this.$message({
-  //             message: 'Login Success!',
-  //             type: 'success'
-  //           })
-  //         } else {
-  //           this.$message.error('Login Failed, Please Check Account Or Password!')
-  //         }
-  //         console.log(response.data.data)
-  //       }).catch((error) => {
-  //         this.$message.error('Login Failed, Please Check Account Or Password!')
-  //         console.log(error)
-  //       })
-  //     }
-  //   }
-  // }
-  export default {
-    name: 'Register',
-    methods: {
-      login () {
-        this.$message({
-          message: 'Register Success!',
-          type: 'success'
+export default {
+  name: 'Register',
+  data () {
+    return {
+      userId: '',
+      userPassword: '',
+      userInfoApi: 'http://localhost/register'
+    }
+  },
+  methods: {
+    register () {
+      this.$ajax({
+        method: 'post',
+        url: this.userInfoApi,
+        data: this.qs.stringify({
+          userId: this.userId,
+          userPassword: this.userPassword
         })
-      }
+      }).then((response) => {
+
+      })
     }
   }
+}
 </script>
 
 <style scoped>
