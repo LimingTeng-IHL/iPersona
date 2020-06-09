@@ -22,28 +22,28 @@
 
 <script>
 export default {
-  name: 'Register',
-  data () {
-    return {
-      userId: '',
-      userPassword: '',
-      userInfoApi: 'http://localhost/register'
-    }
-  },
-  methods: {
-    register () {
-      this.$ajax({
-        method: 'post',
-        url: this.userInfoApi,
-        data: this.qs.stringify({
-          userId: this.userId,
-          userPassword: this.userPassword
-        })
-      }).then((response) => {
-
-      })
-    }
-  }
+  // name: 'Register',
+  // data () {
+  //   return {
+  //     userId: '',
+  //     userPassword: '',
+  //     userInfoApi: 'http://localhost/register'
+  //   }
+  // },
+  // methods: {
+  //   register () {
+  //     this.$ajax({
+  //       method: 'post',
+  //       url: this.userInfoApi,
+  //       data: this.qs.stringify({
+  //         userId: this.userId,
+  //         userPassword: this.userPassword
+  //       })
+  //     }).then((response) => {
+  //
+  //     })
+  //   }
+  // }
 }
 </script>
 

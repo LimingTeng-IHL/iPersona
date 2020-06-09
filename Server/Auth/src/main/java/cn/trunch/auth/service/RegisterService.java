@@ -22,6 +22,10 @@ public class RegisterService {
     }
 
     public Message addUserInfo(HttpServletRequest request) {
+        long id;
+        String password;
 
+        userDao.addUserInfo(id, password);
+        return new Message(200, "注册成功", user);
     }
 }
