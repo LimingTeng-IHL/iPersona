@@ -14,36 +14,42 @@
       <input v-model="userPassword" type="password" title="请输入密码">
       <label>Re-Type Password：</label>
       <input v-model="userPassword" type="password" title="请输入密码">
-<!--      <input class="bt" @click="login" type="submit" value="Register">-->
-      <input class="bt" @click="login" type="submit" value="Register">
+      <input class="bt" @click="addUser" type="submit" value="Register">
+
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  // name: 'Register',
-  // data () {
-  //   return {
-  //     userId: '',
-  //     userPassword: '',
-  //     userInfoApi: 'http://localhost/register'
-  //   }
-  // },
-  // methods: {
-  //   register () {
-  //     this.$ajax({
-  //       method: 'post',
-  //       url: this.userInfoApi,
-  //       data: this.qs.stringify({
-  //         userId: this.userId,
-  //         userPassword: this.userPassword
-  //       })
-  //     }).then((response) => {
-  //
-  //     })
-  //   }
-  // }
+  name: 'Register',
+  data () {
+    return {
+      userId: '',
+      userPassword: '',
+      userInfoApi: 'http://localhost/register'
+    }
+  },
+  methods: {
+    addUser () {
+      this.$ajax({
+        method: 'post',
+        url: this.userInfoApi,
+        data: this.qs.stringify({
+          userId: this.userId,
+          userPassword: this.userPassword
+        })
+      }).then((response) => {
+        this.$message({
+          message: 'Register Success!',
+          type: 'success'
+        })
+      }).catch((error) => {
+        this.$message.error('Register Failed, Please Check Account Or Password!')
+        console.log(error)
+      })
+    }
+  }
 }
 </script>
 

@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 public interface UserDao {
     @Insert("INSERT INTO user (user_id, user_password)" +
             "VALUES (#{userId}, #{userPassword})")
-    Integer addUserInfo(long userId, String userPassword);
+    void addUserInfo(String userId, String userPassword);
 
     @Select("select user_password from user where user_id = #{userId}")
     String getUserPassword(String userId);

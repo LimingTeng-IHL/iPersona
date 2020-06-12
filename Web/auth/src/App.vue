@@ -19,7 +19,8 @@ export default {
   name: 'App',
   data () {
     return {
-      bgURL: [require('./assets/img/bg1.jpg'), require('./assets/img/bg2.jpg'), require('./assets/img/bg3.jpg')]
+      // bgURL: [require('./assets/img/bg1.jpg'), require('./assets/img/bg2.jpg'), require('./assets/img/bg3.jpg')]
+      bgURL: [require('./assets/img/bg2.jpg')]
     }
   }
 }
