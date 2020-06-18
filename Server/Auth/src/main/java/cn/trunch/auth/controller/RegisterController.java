@@ -20,7 +20,7 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "")
     @ResponseBody
     public Message checkUser(String userId) {
         return registerService.checkUserExist(userId);
@@ -28,7 +28,7 @@ public class RegisterController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public Message addUser(HttpServletRequest request) throws JSONException {
+    public Message addUser(HttpServletRequest request)  {
         return registerService.addUserInfo(request);
     }
 }

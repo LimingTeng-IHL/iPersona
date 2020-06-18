@@ -31,19 +31,47 @@ export default {
     }
   },
   methods: {
+    // addUser () {
+    //   this.$ajax({
+    //     method: 'post',
+    //     url: this.userInfoApi,
+    //     data: this.qs.stringify({
+    //       userId: this.userId,
+    //       userPassword: this.userPassword
+    //     })
+    //   }).then((response) => {
+    //     if (response.data.data.userId !== 0) {
+    //       this.$message({
+    //         message: 'Register Success!',
+    //         type: 'success'
+    //       })
+    //     } else {
+    //       this.$message.error('Register Failed, Please Check Account Or Password!')
+    //     }
+    //     console.log(response.data.data)
+    //   }).catch((error) => {
+    //     this.$message.error('Register Failed, Please Check Account Or Password!')
+    //     console.log(error)
+    //   })
+    // }
     addUser () {
       this.$ajax({
         method: 'post',
         url: this.userInfoApi,
-        data: this.qs.stringify({
-          userId: this.userId,
-          userPassword: this.userPassword
-        })
+        data: {
+          'user_id': this.userId,
+          'user_password': this.userPassword
+        }
       }).then((response) => {
-        this.$message({
-          message: 'Register Success!',
-          type: 'success'
-        })
+        if (response.data.data.userId !== 0) {
+          this.$message({
+            message: 'Register Success!',
+            type: 'success'
+          })
+        } else {
+          this.$message.error('Register Failed, Please Check Account Or Password!')
+        }
+        console.log(response.data.data)
       }).catch((error) => {
         this.$message.error('Register Failed, Please Check Account Or Password!')
         console.log(error)
