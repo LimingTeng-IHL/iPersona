@@ -3,18 +3,18 @@ package cn.trunch.auth.entity;
 
 public class User {
 
-  private long userId;
+  private String userId;
   private String userPassword;
   private String userName;
   private String userAvatar;
   private long userPhone;
 
 
-  public long getUserId() {
+  public String getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(String userId) {
     this.userId = userId;
   }
 

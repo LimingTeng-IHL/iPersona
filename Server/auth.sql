@@ -35,7 +35,7 @@ CREATE TABLE `auth`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `user_id` int(12) NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -46,6 +46,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (123456, '123456', '根本停不下来', 'https://avatars0.githubusercontent.com/u/32742342?s=400&u=2d42ee17d1aee6add498d4a1c81c6cf74c6432ff&v=4', NULL);
+INSERT INTO `user` VALUES ('123456', '123456', '根本停不下来', 'https://avatars0.githubusercontent.com/u/32742342?s=400&u=2d42ee17d1aee6add498d4a1c81c6cf74c6432ff&v=4', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

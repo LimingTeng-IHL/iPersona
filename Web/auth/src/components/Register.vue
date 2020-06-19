@@ -8,11 +8,13 @@
         <img src="../assets/img/logo.png" alt="">
         <p>IPERSONA</p>
       </div>
+      <div :class="isEmailValid">
       <label style="margin-top: 50px">Email：</label>
       <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
+      </div>
       <label>Password：</label>
-      <input v-model="userPassword" type="password" title="请输入密码">
-      <label>Re-Type Password：</label>
+      <password v-model="userPassword" type="password" title="请输入密码" :placeholder="placeholder" :secureLength="secureLength"></password>
+      <label>Confirm Password：</label>
       <input v-model="userPassword" type="password" title="请输入密码">
       <input class="bt" @click="addUser" type="submit" value="Register">
 
@@ -21,40 +23,31 @@
 </template>
 
 <script>
+import Password from 'vue-password-strength-meter'
 export default {
   name: 'Register',
   data () {
     return {
       userId: '',
       userPassword: '',
-      userInfoApi: 'http://localhost/register'
+      placeholder: 'Enter 8 characters or more',
+      secureLength: 8, // minimum password
+      userInfoApi: 'http://localhost/register',
+      reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     }
   },
+  components: {
+    Password
+  },
   methods: {
-    // addUser () {
-    //   this.$ajax({
-    //     method: 'post',
-    //     url: this.userInfoApi,
-    //     data: this.qs.stringify({
-    //       userId: this.userId,
-    //       userPassword: this.userPassword
-    //     })
-    //   }).then((response) => {
-    //     if (response.data.data.userId !== 0) {
-    //       this.$message({
-    //         message: 'Register Success!',
-    //         type: 'success'
-    //       })
-    //     } else {
-    //       this.$message.error('Register Failed, Please Check Account Or Password!')
-    //     }
-    //     console.log(response.data.data)
-    //   }).catch((error) => {
-    //     this.$message.error('Register Failed, Please Check Account Or Password!')
-    //     console.log(error)
-    //   })
-    // }
     addUser () {
+      if (this.userId == null || this.userId === '') {
+        this.$message.error('Email is required!')
+        return
+      } else if (!this.reg.test(this.userId)) {
+        this.$message.error('Please enter valid email address!')
+        return
+      }
       this.$ajax({
         method: 'post',
         url: this.userInfoApi,

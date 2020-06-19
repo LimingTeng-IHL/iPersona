@@ -43,7 +43,7 @@ export default {
         })
       }).then((response) => {
         // 获取用户信息，登录成功
-        if (response.data.data.userId !== 0) {
+        if (response.data.data.userId !== null) {
           this.$message({
             message: 'Login Success!',
             type: 'success'

@@ -20,21 +20,7 @@ public class RpcHelper {
             }
         }
 
-        return "cnm";
+        return "JSONObject ERROR";
     }
 
-//        StringBuilder sb = new StringBuilder();
-//        try {
-//            BufferedReader reader = request.getReader();
-//            String line = null;
-//            while ((line = reader.readLine()) != null) {
-//                sb.append(line);
-//            }
-//            reader.close();
-//            return new JSONObject(sb.toString());
-//        } catch (IOException | JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
 }
