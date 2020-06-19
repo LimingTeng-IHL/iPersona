@@ -16,7 +16,7 @@
       <input class="bt" @click="login" type="submit" value="Login">
       <label  class="register_title">Don't have an account?</label>
       <router-link to="/register">
-        <label>Register</label>
+        <label class="register_button">Register</label>
       </router-link>
     </div>
   </div>
@@ -160,10 +160,15 @@ export default {
     width: 100%;
     color: #a9a8a5;
     cursor: pointer;
+    float:left;
   }
 
   .login_panel .bt:hover {
     background-color: #2f86f6;
+  }
+
+  .register_button {
+    float:left;
   }
 
 </style>
