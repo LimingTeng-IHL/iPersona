@@ -10,8 +10,6 @@
  Target Server Type    : MySQL
  Target Server Version : 50726
  File Encoding         : 65001
-
- Date: 30/07/2019 09:54:15
 */
 
 SET NAMES utf8mb4;
@@ -46,6 +44,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('123456', '123456', '根本停不下来', 'https://avatars0.githubusercontent.com/u/32742342?s=400&u=2d42ee17d1aee6add498d4a1c81c6cf74c6432ff&v=4', NULL);
+INSERT INTO `user` VALUES ('tengliming@gmail.com', 'AaBbCc123+', NULL, NULL , NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -20,12 +20,6 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-    @RequestMapping(value = "")
-    @ResponseBody
-    public Message checkUser(String userId) {
-        return registerService.checkUserExist(userId);
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Message addUser(HttpServletRequest request)  {

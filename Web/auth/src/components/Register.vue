@@ -112,7 +112,9 @@ export default {
           'user_password': this.userPassword
         }
       }).then((response) => {
-        if (response.data.data.userId !== 0) {
+        if (response.data.code === 202) {
+          this.$message.error('UserName already exits! Please change another identity.')
+        } else if (response.data.data.userId !== 0) {
           this.$message({
             message: 'Register Success!',
             type: 'success'

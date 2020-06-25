@@ -31,9 +31,16 @@ public class RegisterService {
             if (jsonObject != null) {
                 String id = jsonObject.getString("user_id");
                 String password = jsonObject.getString("user_password");
-                userDao.addUserInfo(id, password);
+                //传入的UserID已存在
                 User user = userDao.getUserInfo(id);
-                return new Message(200, "注册成功", user);
+                if (null != user) {
+                    return new Message(202, "该用户已存在", new User());
+                }
+
+                //传入的UserID不存在
+                userDao.addUserInfo(id, password);
+                User newUser = userDao.getUserInfo(id);
+                return new Message(200, "注册成功", newUser);
             } else {
                 return new Message(400, "JSON为空", new User());
             }
@@ -44,11 +51,4 @@ public class RegisterService {
         return new Message(403, "注册失败", new User());
     }
 
-    public Message checkUserExist(String userId) {
-        User user = userDao.getUserInfo(userId);
-        if (null != user) {
-            return new Message(202, "check失败", new User());
-        }
-        return new Message(400, "check成功", user);
-    }
 }
