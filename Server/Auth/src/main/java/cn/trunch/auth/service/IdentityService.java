@@ -19,30 +19,24 @@ import java.io.IOException;
 
 
 @Service
-public class RegisterService {
+public class IdentityService {
 
     @Resource
     UserDao userDao;
 
-    public Message addUserInfo(HttpServletRequest request) {
+    public Message checkUserIdentity(HttpServletRequest request) {
         try {
             String result = RpcHelper.readJsonObject(request);
             JSONObject jsonObject = JSONObject.parseObject(result);
             if (jsonObject != null) {
                 String name = jsonObject.getString("user_id");
                 String id = name.toLowerCase();
-                String password = jsonObject.getString("user_password");
-                String email = jsonObject.getString("user_email");
                 //传入的UserID已存在
                 User user = userDao.getUserInfo(id);
                 if (null != user) {
                     return new Message(202, "该用户已存在", new User());
                 }
-
-                //传入的UserID不存在
-                userDao.addUserInfo(id, password, name, email);
-                User newUser = userDao.getUserInfo(id);
-                return new Message(200, "注册成功", newUser);
+                return new Message(201, "用户名可用", new User());
             } else {
                 return new Message(400, "JSON为空", new User());
             }

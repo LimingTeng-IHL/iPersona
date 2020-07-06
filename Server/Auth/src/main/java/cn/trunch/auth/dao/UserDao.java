@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 public interface UserDao {
-    @Insert("INSERT INTO user (user_id, user_password)" +
-            "VALUES (#{userId}, #{userPassword})")
-    void addUserInfo(String userId, String userPassword);
+    @Insert("INSERT INTO user (user_id, user_password, user_name, user_email)" +
+            "VALUES (#{userId}, #{userPassword}, #{userName}, #{userEmail})")
+    void addUserInfo(String userId, String userPassword, String userName, String userEmail);
 
     @Select("select user_password from user where user_id = #{userId}")
     String getUserPassword(String userId);
@@ -19,7 +19,7 @@ public interface UserDao {
             @Result(property = "userId", column = "user_id"),
             @Result(property = "userPassword", column = "user_password"),
             @Result(property = "userName", column = "user_name"),
-            @Result(property = "userAvatar", column = "user_avatar"),
+            @Result(property = "userEmail", column = "user_email"),
             @Result(property = "userPhone", column = "user_phone")
     })
     User getUserInfo(String userId);

@@ -8,32 +8,50 @@
         <img src="../assets/img/logo.png" alt="">
         <p>IPERSONA</p>
       </div>
-      <label style="margin-top: 50px">Email：</label>
-      <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
 
-      <label>Password：</label>
+      <el-steps :active="active" finish-status="success" simple>
+        <el-step></el-step>
+        <el-step></el-step>
+        <el-step></el-step>
+        <el-step></el-step>
+      </el-steps>
 
-      <div class="input_container">
-        <ul>
-          <li v-bind:class="{ is_valid: contains_eight_characters }">8 Characters</li>
-          <li v-bind:class="{ is_valid: contains_uppercase }">Contains Uppercase & Lowercase</li>
-          <li v-bind:class="{ is_valid: contains_number }">Contains Number</li>
-          <li v-bind:class="{ is_valid: contains_special_character }">Contains Special Character</li>
-        </ul>
-
-        <div class="checkmark_container" v-bind:class="{ show_checkmark: valid_password }">
-          <svg width="50%" height="50%" viewBox="0 0 140 100">
-            <path class="checkmark" v-bind:class="{ checked: valid_password }" d="M10,50 l25,40 l95,-70" />
-          </svg>
+      <!--      Step 1: Identity-->
+      <div v-if="active===0">
+        <label style="margin-top: 50px">Identity：</label>
+        <input v-model="userId" type="tel" pattern="^\d{11}$" title="Please Enter Identity" required>
+      </div>
+      <!--      Step 2 : Email-->
+      <div v-if="active===1">
+        <label style="margin-top: 50px">Email：</label>
+        <input v-model="userEmail" type="tel" pattern="^\d{11}$" title="Please Enter Email" required>
+      </div>
+      <!--      Step 3 : Password-->
+      <div v-if="active===2">
+        <label>Password：</label>
+        <div class="input_container">
+          <ul>
+            <li v-bind:class="{ is_valid: contains_eight_characters }">8 Characters</li>
+            <li v-bind:class="{ is_valid: contains_uppercase }">Contains Uppercase & Lowercase</li>
+            <li v-bind:class="{ is_valid: contains_number }">Contains Number</li>
+            <li v-bind:class="{ is_valid: contains_special_character }">Contains Special Character</li>
+          </ul>
+          <div class="checkmark_container" v-bind:class="{ show_checkmark: valid_password }">
+            <svg width="50%" height="50%" viewBox="0 0 140 100">
+              <path class="checkmark" v-bind:class="{ checked: valid_password }" d="M10,50 l25,40 l95,-70" />
+            </svg>
+          </div>
+          <password v-model="userPassword" type="password" @input="checkPassword" class="password_first_input" title="Please Enter Password" autocomplete="off" :secureLength="secureLength" required></password>
         </div>
-
-        <password v-model="userPassword" type="password" @input="checkPassword" class="password_first_input" title="请输入密码" autocomplete="off" :secureLength="secureLength"></password>
       </div>
 
-      <label>Confirm Password：</label>
-      <input v-model="passwordConfirm" type="password" title="请输入密码">
+      <div v-if="active===3">
+        <label>Confirm Password：</label>
+        <input v-model="passwordConfirm" type="password" title="Please Confirm Password" required>
+        <input class="bt" @click="addUser" type="submit" value="Register">
+      </div>
 
-      <input class="bt" @click="addUser" type="submit" value="Register">
+      <el-button style="margin-top: 12px" @click="next" v-if="active<3">NEXT</el-button>
 
     </div>
   </div>
@@ -46,7 +64,9 @@ export default {
   name: 'Register',
   data () {
     return {
+      active: 0,
       userId: '',
+      userEmail: '',
       userPassword: '',
       password_length: 0,
       contains_eight_characters: false,
@@ -84,11 +104,20 @@ export default {
         this.valid_password = false
       }
     },
+    next () {
+      if (this.active++ > 3) {
+        this.active = 0
+      }
+    },
     addUser () {
       if (this.userId == null || this.userId === '') {
-        this.$message.error('Email is required!')
+        this.$message.error('Identity is required!')
         return
-      } else if (!this.reg.test(this.userId)) {
+      }
+      if (this.userEmail == null || this.userEmail === '') {
+        this.$message.error('userEmail is required!')
+        return
+      } else if (!this.reg.test(this.userEmail)) {
         this.$message.error('Please enter valid email address!')
         return
       }
@@ -109,7 +138,8 @@ export default {
         url: this.userInfoApi,
         data: {
           'user_id': this.userId,
-          'user_password': this.userPassword
+          'user_password': this.userPassword,
+          'user_email': this.userEmail
         }
       }).then((response) => {
         if (response.data.code === 202) {
@@ -138,7 +168,7 @@ export default {
     z-index: 99;
     position: absolute;
     width: 380px;
-    height: 700px;
+    height: 540px;
     top: 50%;
     left: 50%;
     margin-left: -190px;
@@ -167,7 +197,7 @@ export default {
     top: 50%;
     left: 50%;
     width: 270px;
-    height: 700px;
+    height: 540px;
     padding: 0 55px;
     transform: translate(-50%, -50%);
     /* background: #fff; */

@@ -9,7 +9,7 @@
         <img src="../assets/img/logo.png" alt="">
         <p>IPERSONA</p>
       </div>
-      <label style="margin-top: 50px">Email：</label>
+      <label style="margin-top: 50px">Identity：</label>
       <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
       <label>Password：</label>
       <input v-model="userPassword" type="password" title="请输入密码">
@@ -49,11 +49,11 @@ export default {
             type: 'success'
           })
         } else {
-          this.$message.error('Login Failed, Please Check Account Or Password!')
+          this.$message.error('Login Failed, Please Check Identity Or Password!')
         }
         console.log(response.data.data)
       }).catch((error) => {
-        this.$message.error('Login Failed, Please Check Account Or Password!')
+        this.$message.error('Login Failed, Please Check Identity Or Password!')
         console.log(error)
       })
     }

@@ -36,7 +36,7 @@ CREATE TABLE `user`  (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `user_avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_phone` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
@@ -44,6 +44,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('tengliming@gmail.com', 'AaBbCc123+', NULL, NULL , NULL);
+INSERT INTO `user` VALUES ('liming', 'AaBbCc123+', 'Liming', 'liming@gmail.com' , NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

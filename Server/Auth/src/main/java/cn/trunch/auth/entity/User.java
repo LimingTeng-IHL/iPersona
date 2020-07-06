@@ -6,7 +6,7 @@ public class User {
   private String userId;
   private String userPassword;
   private String userName;
-  private String userAvatar;
+  private String userEmail;
   private long userPhone;
 
 
@@ -37,12 +37,12 @@ public class User {
   }
 
 
-  public String getUserAvatar() {
-    return userAvatar;
+  public String getUserEmail() {
+    return userEmail;
   }
 
-  public void setUserAvatar(String userAvatar) {
-    this.userAvatar = userAvatar;
+  public void setUserEmail(String userEmail) {
+    this.userEmail = userEmail;
   }
 
 
