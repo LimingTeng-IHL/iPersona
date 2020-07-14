@@ -4,8 +4,15 @@ public class Message {
     private Integer code;
     private String message;
     private Object data;
+    private String checkCode;
 
     public Message() {
+    }
+
+    public Message(Integer code, String message, String checkCode) {
+        this.code = code;
+        this.message = message;
+        this.checkCode = checkCode;
     }
 
     public Message(Integer code, String message, Object data) {
@@ -36,5 +43,13 @@ public class Message {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public String getCheckCode() {
+        return checkCode;
+    }
+
+    public void setCheckCode(String checkCode) {
+        this.checkCode = checkCode;
     }
 }

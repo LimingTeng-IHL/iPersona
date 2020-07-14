@@ -13,3 +13,24 @@ spring:
   mvc:
     servlet:
       path: /
+  mail:
+    host: smtp.qq.com
+    username: immortal_identity@qq.com
+    password: cdunyedvsbulfedj
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
+    port: 465
+
+mail:
+  fromMail:
+    addr: immortal_identity@qq.com
+  receptionMail:
+    addr: tengliming96@gmail.com

@@ -14,6 +14,7 @@
         <el-step></el-step>
         <el-step></el-step>
         <el-step></el-step>
+        <el-step></el-step>
       </el-steps>
 
       <!--      Step 1: Identity-->
@@ -26,8 +27,33 @@
         <label style="margin-top: 50px">Email：</label>
         <input v-model="userEmail" type="tel" pattern="^\d{11}$" title="Please Enter Email" required>
       </div>
-      <!--      Step 3 : Password-->
+
+      <!--      Step 3 : Email Verification-->
       <div v-if="active===2">
+<!--        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">-->
+<!--          <el-form-item label="邮箱" prop="email">-->
+<!--            <el-input v-model="ruleForm.email" class="email" placeholder="邮箱"></el-input>-->
+<!--          </el-form-item>-->
+<!--          <el-form-item label="验证码" prop="code" class="pr">-->
+<!--            <el-input prop="code" v-model="ruleForm.code" placeholder="验证码"></el-input>-->
+<!--            <button @click="getCode()" class="code-btn" :disabled="!show">-->
+<!--              <span v-show="show">发送验证码</span>-->
+<!--              <span v-show="!show" class="count">{{count}} s</span>-->
+<!--            </button>-->
+<!--          </el-form-item>-->
+<!--        </el-form>-->
+
+        <label style="margin-top: 10px">Email：</label>
+        <input v-model="userEmail" type="tel" pattern="^\d{11}$" title="Please Enter Email" required>
+        <input class="bt" @click="getCode" type="submit" value="Get Token" style="margin-top: 10px">
+        <label style="margin-top: 10px">Token：</label>
+        <input v-model="code" type="tel" pattern="^\d{11}$" title="Please Enter Token" required>
+        <input class="bt" @click="verifyToken" type="submit" value="Verify" style="margin-top: 10px">
+
+      </div>
+
+      <!--      Step 4 : Password-->
+      <div v-if="active===3">
         <label>Password：</label>
         <div class="input_container">
           <ul>
@@ -45,13 +71,14 @@
         </div>
       </div>
 
-      <div v-if="active===3">
+      <!--      Step 5 : Confirm Password-->
+      <div v-if="active===4">
         <label>Confirm Password：</label>
         <input v-model="passwordConfirm" type="password" title="Please Confirm Password" required>
         <input class="bt" @click="addUser" type="submit" value="Register">
       </div>
 
-      <el-button style="margin-top: 12px" @click="next" v-if="active<3">NEXT</el-button>
+      <el-button style="margin-top: 12px" @click="next" v-if="active<4">NEXT</el-button>
 
     </div>
   </div>
@@ -67,6 +94,8 @@ export default {
       active: 0,
       userId: '',
       userEmail: '',
+      code: '',
+      correctToken: '',
       userPassword: '',
       password_length: 0,
       contains_eight_characters: false,
@@ -77,6 +106,7 @@ export default {
       passwordConfirm: '',
       secureLength: 8,
       userInfoApi: 'http://localhost/register',
+      emailVerifyApi: 'http://localhost/mail',
       reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     }
   },
@@ -105,8 +135,44 @@ export default {
       }
     },
     next () {
-      if (this.active++ > 3) {
+      if (this.active++ > 4) {
         this.active = 0
+      }
+    },
+    getCode () {
+      this.$ajax({
+        method: 'post',
+        url: this.emailVerifyApi,
+        data: this.qs.stringify({
+          userEmail: this.userEmail
+        })
+      }).then((response) => {
+        if (response.data.code === 400) {
+          this.$message.error('Email Send failed')
+        } else if (response.data.code === 200) {
+          console.log('Check Code is : ' + response.data.checkCode)
+          this.correctToken = response.data.checkCode
+          this.$message({
+            message: 'Email send Success!',
+            type: 'success'
+          })
+        } else {
+          this.$message.error('Something Wrong.')
+        }
+        // console.log(response.data.checkCode)
+      }).catch((error) => {
+        this.$message.error('Error')
+        console.log(error)
+      })
+    },
+    verifyToken () {
+      if (this.code === this.correctToken) {
+        this.$message({
+          message: 'Email Verified!',
+          type: 'success'
+        })
+      } else {
+        this.$message.error('Please Enter Correct Token.')
       }
     },
     addUser () {
