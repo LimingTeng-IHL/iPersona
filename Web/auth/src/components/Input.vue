@@ -49,7 +49,7 @@ export default {
             type: 'success'
           })
         } else {
-          this.$message.error('Login Failed, Please Check Identity Or Password!')
+          this.$message.error('Login Failed, Please Check Identity Or Password! 1')
         }
         console.log(response.data.data)
       }).catch((error) => {
