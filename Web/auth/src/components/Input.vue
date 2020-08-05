@@ -72,7 +72,7 @@ export default {
   .login_box {
     z-index: 99;
     position: absolute;
-    width: 375px;
+    width: 350px;
     height: 540px;
     top: 50%;
     left: 50%;
@@ -137,8 +137,7 @@ export default {
     margin: auto;
     margin-top: 13.5px;
     text-align: center;
-    width: 91.5px;
-    height: 12px;
+    height: 14px;
     font-family: Lato;
     font-size: 12px;
     font-weight: 900;
@@ -178,7 +177,7 @@ export default {
     margin-bottom: 17px;
     display: block;
     width: 96px;
-    height: 12px;
+    height: 14px;
     font-family: lato;
     font-size: 12px;
     font-weight: normal;

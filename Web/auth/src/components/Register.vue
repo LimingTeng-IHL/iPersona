@@ -271,6 +271,13 @@ export default {
     overflow: hidden;
   }
 
+  .Oval {
+  width: 8px;
+  height: 8px;
+  border: solid 0.5px #fbd000;
+  background-color: #fbd000;
+  }
+
   .register_panel .register_title {
     text-align: center;
   }
