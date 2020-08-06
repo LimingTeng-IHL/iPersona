@@ -173,7 +173,8 @@ export default {
     margin: auto;
     margin-bottom: 17px;
     display: block;
-    width: 96px;
+    text-align: center;
+    width: 120px;
     height: 14px;
     font-family: lato;
     font-size: 12px;
