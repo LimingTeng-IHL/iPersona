@@ -4,7 +4,6 @@
     <div class="login_panel">
       <div class="login_title">
         <img src="../assets/img/logo.png" alt="">
-        <p>IPERSONA</p>
       </div>
         <router-link to="/auth">
         <div class="login_close">
@@ -83,10 +82,10 @@ export default {
 
   .login_close {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 64px;
-    height: 64px;
+    top: 0px;
+    right: 0px;
+    width: 187.5px;
+    height: 51px;
     background: url(../assets/img/qrcode.png) no-repeat right top;
     background-size: 100% 100%;
     border-top-right-radius: 5px;
@@ -158,12 +157,10 @@ export default {
     border: solid 2.5px #444444;
   }
   .login_panel .login_title img {
-    margin-top: 60px;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
+    margin-top: 140px;
+    height: 21.5px;
+    width: 251px;
     padding: 10px;
-    border: 3px solid #444444;
   }
 
   .login_panel .login_title p {
