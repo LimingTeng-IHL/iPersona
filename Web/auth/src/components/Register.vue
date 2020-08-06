@@ -240,7 +240,7 @@ export default {
     margin-left: -190px;
     margin-top: -270px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #333333;
     box-shadow: 0 2px 10px #999;
   }
 
@@ -248,9 +248,9 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    width: 64px;
-    height: 64px;
-    background: url(../assets/img/qrcode.png) no-repeat right top;
+    width: 51px;
+    height: 51px;
+    background: url(../assets/img/qrcode2.png) no-repeat right top;
     background-size: 100% 100%;
     border-top-right-radius: 5px;
     cursor: pointer;
@@ -283,12 +283,10 @@ export default {
   }
 
   .register_panel .register_title img {
-    margin-top: 60px;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
+    margin-top: 140px;
+    height: 21.5px;
+    width: 251px;
     padding: 10px;
-    border: 3px solid #d7e8fc;
   }
 
   .register_panel .register_title p {
