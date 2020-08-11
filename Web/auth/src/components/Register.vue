@@ -6,10 +6,9 @@
     <div class="register_panel">
       <div class="register_title">
         <img src="../assets/img/logo.png" alt="">
-        <p>IPERSONA</p>
       </div>
 
-      <el-steps :active="active" finish-status="success" simple>
+      <el-steps :space="200" :active="0">
         <el-step></el-step>
         <el-step></el-step>
         <el-step></el-step>
@@ -78,7 +77,7 @@
         <input class="bt" @click="addUser" type="submit" value="Register">
       </div>
 
-      <el-button style="margin-top: 12px" @click="next" v-if="active<4">NEXT</el-button>
+      <el-button style="Nextbt" @click="next" v-if="active<4">NEXT</el-button>
 
     </div>
   </div>
@@ -276,6 +275,10 @@ export default {
   height: 8px;
   border: solid 0.5px #fbd000;
   background-color: #fbd000;
+  }
+
+  .Nextbt {
+    background: url(../assets/img/Next.png) no-repeat
   }
 
   .register_panel .register_title {
