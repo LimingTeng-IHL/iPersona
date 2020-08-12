@@ -1,23 +1,27 @@
 <template>
-  <!--  账号输入登录-->
+  <!--  Account Login -->
   <div class="login_box">
-    <router-link to="/auth">
-      <div class="login_close"></div>
-    </router-link>
     <div class="login_panel">
       <div class="login_title">
         <img src="../assets/img/logo.png" alt="">
-        <p>IPERSONA</p>
       </div>
-      <label style="margin-top: 50px">Identity：</label>
-      <input v-model="userId" type="tel" pattern="^\d{11}$" title="请输入账号">
-      <label>Password：</label>
-      <input v-model="userPassword" type="password" title="请输入密码">
+        <router-link to="/auth">
+        <div class="login_close">
+        </div>
+        </router-link>
+      <div class="login_input">
+      <input v-model="userId" type="tel" pattern="^\d{11}$" title="Input Email" placeholder="Email Address">
+      <input v-model="userPassword" type="password" title="Input Password" placeholder="Password">
       <input class="bt" @click="login" type="submit" value="Login">
-      <label  class="register_title">Don't have an account?</label>
-      <router-link to="/register">
-        <label class="register_button">Register</label>
-      </router-link>
+      </div>
+      <div class= "signup">
+        <label class="register_title">Need an account?</label>
+        <router-link to="/register">
+        <div class="button">
+        <div class="signup_button">SIGN UP NOW</div>
+        </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -43,17 +47,17 @@ export default {
         })
       }).then((response) => {
         // 获取用户信息，登录成功
-        if (response.data.data.userId !== null) {
+        if (response.data.data.userId !== 0) {
           this.$message({
             message: 'Login Success!',
             type: 'success'
           })
         } else {
-          this.$message.error('Login Failed, Please Check Identity Or Password! 1')
+          this.$message.error('Login Failed, Please Check Account Or Password!')
         }
         console.log(response.data.data)
       }).catch((error) => {
-        this.$message.error('Login Failed, Please Check Identity Or Password!')
+        this.$message.error('Login Failed, Please Check Account Or Password!')
         console.log(error)
       })
     }
@@ -67,23 +71,21 @@ export default {
   .login_box {
     z-index: 99;
     position: absolute;
-    width: 380px;
+    width: 350px;
     height: 540px;
     top: 50%;
     left: 50%;
     margin-left: -190px;
     margin-top: -270px;
-    border-radius: 6px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px #999;
+    background-color: #333333;
   }
 
   .login_close {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 64px;
-    height: 64px;
+    top: 0px;
+    right: 0px;
+    width: 187.5px;
+    height: 51px;
     background: url(../assets/img/qrcode.png) no-repeat right top;
     background-size: 100% 100%;
     border-top-right-radius: 5px;
@@ -93,29 +95,72 @@ export default {
 
   /*登录*/
   .login_panel {
-    position: absolute;
+    position: relative;
+    display: block;
     top: 50%;
     left: 50%;
-    width: 270px;
-    height: 540px;
-    padding: 0 55px;
+    margin: auto;
+    width: 375px;
+    height: 667px;
+    padding: 0 0px;
+    background-color: #333333;
     transform: translate(-50%, -50%);
     /* background: #fff; */
     border-radius: 6px;
     overflow: hidden;
   }
 
+  .login_input{
+    position: relative; top: 120px;
+  }
+  input[placeholder] {
+    width: 147px;
+    height: 24px;
+    font-family: lato;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.21px;
+    text-align: center;
+    color: #b2b2b2;
+  }
+
+  .signup{
+    position: relative; top: 180px;
+  }
+
+  .signup .signup_button{
+    display: block;
+    margin: auto;
+    margin-top: 13.5px;
+    text-align: center;
+    height: 14px;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 900;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
   .login_panel .login_title {
     text-align: center;
   }
-
+  .signup .button{
+    margin: auto;
+    display: block;
+    width: 345px;
+    height: 44px;
+    border: solid 2.5px #444444;
+  }
   .login_panel .login_title img {
-    margin-top: 60px;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
+    margin-top: 140px;
+    height: 21.5px;
+    width: 251px;
     padding: 10px;
-    border: 3px solid #d7e8fc;
   }
 
   .login_panel .login_title p {
@@ -125,50 +170,47 @@ export default {
   }
 
   .login_panel label {
+    margin: auto;
+    margin-bottom: 17px;
     display: block;
+    text-align: center;
+    width: 120px;
+    height: 14px;
+    font-family: lato;
     font-size: 12px;
-    line-height: 18px;
-    color: #a9a8a5;
-    margin-top: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 0.2px;
+    color: #b2b2b2;
   }
 
   .login_panel input {
-    display: inline;
-    height: 42px;
-    padding: 0 5%;
-    line-height: 42px;
+    display: block;
+    margin: 17px auto;
+    width: 227.5px;
+    height: 44px;
+    padding: 0 0;
+    line-height: 44px;
     font-size: 14px;
-    color: #333333;
-    border-radius: 4px;
+    color: #b2b2b2;
     outline: 0;
     border: 0;
-    width: 90%;
-    background: #d7e8fc;
+    background: #444444;
   }
-
   /* 按钮 */
   .login_panel .bt {
-    margin-top: 35px;
-    width: 100%;
-    color: #ffffff;
-    background: #379df6;
+    margin-top: 17px;
+    width: 227.5px;
+    height: 44px;
+    color: #333333;
+    background: #fbd000;
     cursor: pointer;
-  }
-
-  .login_panel .register_title {
-    margin-top: 35px;
-    width: 100%;
-    color: #a9a8a5;
-    cursor: pointer;
-    float:left;
   }
 
   .login_panel .bt:hover {
-    background-color: #2f86f6;
-  }
-
-  .register_button {
-    float:left;
+    background-color: #cda456;
   }
 
 </style>

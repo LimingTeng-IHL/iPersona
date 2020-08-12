@@ -17,7 +17,10 @@
       </div>
       <div>
         <p class="sub_title">{{tip}}</p>
-        <p class="sub_desc">Scan Code to Login, Easier, Faster and Safer</p>
+        <p class="sub_desc">Open up your iPersona app, Use the scan function to login</p>
+        <div class="button">
+        <div class="download_button">Download iPersona</div>
+        </div>
       </div>
     </div>
   </div>
@@ -142,7 +145,7 @@ export default {
     margin-left: -190px;
     margin-top: -270px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #333333;
     box-shadow: 0 2px 10px #999;
   }
 
@@ -150,8 +153,8 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    width: 64px;
-    height: 64px;
+    width: 187.5px;
+    height: 51px;
     background: url(../assets/img/pcinput.png) no-repeat right top;
     background-size: 100% 100%;
     border-top-right-radius: 5px;
@@ -266,5 +269,30 @@ export default {
     font-size: 19px;
     color: #353535;
     margin-top: 20px;
+  }
+
+  .button {
+    margin-top: 45px;
+    margin-left: 15px;;
+    width: 345px;
+    height: 44px;
+    border: solid 2.5px #444444;
+  }
+  .download_button {
+    display: block;
+    text-align: center;
+    margin-top: 13.5px;
+    margin-left: 96px;
+    width: 153px;
+    height: 12px;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 900;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffffff;
   }
 </style>

@@ -7,8 +7,6 @@
     </el-carousel>
     <router-view></router-view>
     <div class="login_content">
-      <p><span class="left-quote"></span><span>iPersona</span></p>
-      <p><span></span><span class="right-quote"></span></p>
     </div>
     <p class="power_by">© Immortal Identity All Rights Reserved</p>
   </div>

@@ -6,10 +6,9 @@
     <div class="register_panel">
       <div class="register_title">
         <img src="../assets/img/logo.png" alt="">
-        <p>IPERSONA</p>
       </div>
 
-      <el-steps :active="active" finish-status="success" simple>
+      <el-steps :space="200" :active="0">
         <el-step></el-step>
         <el-step></el-step>
         <el-step></el-step>
@@ -78,7 +77,7 @@
         <input class="bt" @click="addUser" type="submit" value="Register">
       </div>
 
-      <el-button style="margin-top: 12px" @click="next" v-if="active<4">NEXT</el-button>
+      <el-button style="Nextbt" @click="next" v-if="active<4">NEXT</el-button>
 
     </div>
   </div>
@@ -203,9 +202,9 @@ export default {
         method: 'post',
         url: this.userInfoApi,
         data: {
-          'user_id': this.userId,
-          'user_password': this.userPassword,
-          'user_email': this.userEmail
+          user_id: this.userId,
+          user_password: this.userPassword,
+          user_email: this.userEmail
         }
       }).then((response) => {
         if (response.data.code === 202) {
@@ -240,7 +239,7 @@ export default {
     margin-left: -190px;
     margin-top: -270px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #333333;
     box-shadow: 0 2px 10px #999;
   }
 
@@ -248,9 +247,9 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    width: 64px;
-    height: 64px;
-    background: url(../assets/img/qrcode.png) no-repeat right top;
+    width: 51px;
+    height: 51px;
+    background: url(../assets/img/qrcode2.png) no-repeat right top;
     background-size: 100% 100%;
     border-top-right-radius: 5px;
     cursor: pointer;
@@ -271,17 +270,22 @@ export default {
     overflow: hidden;
   }
 
+  .Oval {
+  width: 8px;
+  height: 8px;
+  border: solid 0.5px #fbd000;
+  background-color: #fbd000;
+  }
+
   .register_panel .register_title {
     text-align: center;
   }
 
   .register_panel .register_title img {
-    margin-top: 60px;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
+    margin-top: 140px;
+    height: 21.5px;
+    width: 251px;
     padding: 10px;
-    border: 3px solid #d7e8fc;
   }
 
   .register_panel .register_title p {
