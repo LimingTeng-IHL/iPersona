@@ -1,28 +1,10 @@
 <template>
-  <!--  Account Login -->
+  <!--  Account Profile -->
   <div class="login_box">
     <div class="login_panel">
       <div class="login_title">
-        <img src="../assets/img/logo.png" alt="">
-      </div>
-        <router-link to="/auth">
-        <div class="login_close">
-        </div>
-        </router-link>
-      <div class="login_input">
-      <input v-model="userId" type="tel" pattern="^\d{11}$" title="Input Email" placeholder="Email Address">
-      <input v-model="userPassword" type="password" title="Input Password" placeholder="Password">
-      <router-link to="/profile">
-        <input class="bt" @click="login" type="submit" value="Login">
-      </router-link>
-      </div>
-      <div class= "signup">
-        <label class="register_title">Need an account?</label>
-        <router-link to="/register">
-        <div class="button">
-        <div class="signup_button">SIGN UP NOW</div>
-        </div>
-        </router-link>
+        <img src="../assets/img/head.png" alt="" width="300" height="300">
+        <p v-text="'Welcome, here!'"></p>
       </div>
     </div>
   </div>
@@ -30,36 +12,9 @@
 
 <script>
 export default {
-  name: 'Input',
+  name: 'Profile',
   data () {
-    return {
-      userId: '',
-      userPassword: '',
-      userInfoApi: 'http://localhost/login' // 通过用户ID登录接口
-    }
-  },
-  methods: {
-    login () {
-      this.$ajax({
-        method: 'post',
-        url: this.userInfoApi,
-        data: this.qs.stringify({
-          userId: this.userId,
-          userPassword: this.userPassword
-        })
-      }).then((response) => {
-        // 获取用户信息，登录成功
-        if (response.data.data.userId !== 0) {
-          this.$message({
-            message: 'Login Success!',
-            type: 'success'
-          })
-        } else {
-          this.$message.error('Login Failed, Please Check Account Or Password!')
-        }
-        console.log(response.data.data)
-      })
-    }
+
   }
 }
 </script>
@@ -157,8 +112,8 @@ export default {
   }
   .login_panel .login_title img {
     margin-top: 140px;
-    height: 21.5px;
-    width: 251px;
+    height: 150px;
+    width: 150px;
     padding: 10px;
   }
 

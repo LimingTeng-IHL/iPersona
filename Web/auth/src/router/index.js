@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Auth from '../components/Auth'
 import Input from '../components/Input'
 import Register from '../components/Register'
+import Profile from '../components/Profile'
 
 Vue.use(Router)
 
@@ -23,6 +24,10 @@ export default new Router({
     {
       path: '/register',
       component: Register
+    },
+    {
+      path: '/profile',
+      component: Profile
     }
   ]
 })
